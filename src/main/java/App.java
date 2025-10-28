@@ -6,8 +6,23 @@ public class App {
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(AppConfig.class);
         HelloWorld bean =
-                (HelloWorld) applicationContext.getBean("helloworld");
+                 applicationContext.getBean("helloworld", HelloWorld.class);
         System.out.println(bean.getMessage());
-        System.out.println("privet");
+
+        HelloWorld bean1 =
+                 applicationContext.getBean("helloworld", HelloWorld.class);
+        System.out.println(bean.getMessage());
+
+        System.out.println("--------------------------------------");
+
+        Cat bean2 =
+                applicationContext.getBean("cat", Cat.class);
+        System.out.println(bean2.getName());
+
+        Cat bean3 =
+                applicationContext.getBean("cat", Cat.class);
+        System.out.println(bean3.getName());
+
+        System.out.println((bean == bean1) + "\n" + (bean2 == bean3));
     }
 }
